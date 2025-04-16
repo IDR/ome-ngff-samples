@@ -49,6 +49,13 @@ title: "Catalog of IDR images formatted as OME-NGFF"
     @keyframes seesaw { from { transform: rotate(-0.05turn) } to { transform: rotate(0.05turn); }  }
 </style>
 
+<p>To download samples, you can use <code>aws</code> CLI. E.g</p>
+
+<code>
+$ aws s3 sync --endpoint-url https://uk1s3.embassy.ebi.ac.uk --no-sign-request s3://idr/zarr/v0.4/idr0062A/6001240.zarr/ 6001240.zarr
+</code>
+
+
 <table class="display table" id="table">
     <thead>
 <!-- TODO: should be read from data file -->
