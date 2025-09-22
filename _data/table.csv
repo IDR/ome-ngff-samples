@@ -98,3 +98,5 @@ OME-NGFF version,EMBL-EBI bucket (current),SizeX,SizeY,SizeZ,SizeC,SizeT,Axes,We
 0.5,https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.5/idr0051/180712_H2B_22ss_Courtney1_20180712-163837_p00_c00_preview.zarr,333,333,201,1,79,XYZCT,,,,CC BY 4.0,idr0062,,2024-11-21,4007817
 0.5,https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.5/idr0026/3.66.9-6.141020_15-41-29.00.ome.zarr,507,507,21,3,47,XYZCT,,,,CC BY 4.0,idr0026,,2024-11-21,3261701
 0.5,https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.5/idr0083/9822152.zarr,144384,93184,1,1,1,XYZCT,,,,CC BY 4.0,idr0083,,2024-11-21,9822152
+0.5,https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.5/idr0033A/BR00109990_C2.zarr,2080,1552,,5,,XYC,,,bioformats2raw.layout (9 images),CC BY 4.0,idr0033,,2025-09-22,14002892
+0.4,https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.4/idr0079A/idr0079_images.zarr,1584,788,142,2,,,,,bioformats2raw.layout labels (0),CC BY 4.0,idr0079,,2025-09-22,9836998
