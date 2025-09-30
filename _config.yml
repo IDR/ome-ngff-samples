@@ -2,9 +2,18 @@ title: "IDR OME-NGFF Samples"
 description: "A collection of OME-NGFF filesets converted from IDR data"
 author: "OME"
 
-remote_theme: "jekyll/minima@master"
+theme: minima
+baseurl: "/ome-ngff-samples"
 
 plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-sitemap
+
+exclude:
+  - .pixi/
+  - pixi.toml
+  - pixi.lock
+
+sass:
+  quiet_deps: true
