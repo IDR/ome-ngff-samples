@@ -217,10 +217,15 @@ function showS3Options(httpsUrl, imageName) {
     document.getElementById('pythonCodeInOptions').dataset.copyText = python.code;
 
     modal.style.display = 'block';
+
+    modal.onclick = closeS3Options;
 }
 
-function closeS3Options() {
-    document.getElementById('s3OptionsModal').style.display = 'none';
+function closeS3Options(event) {
+    // event is undifined if click comes from x button
+    if (event == undefined || event?.target.id == "s3OptionsModal") {
+        document.getElementById('s3OptionsModal').style.display = 'none';
+    }
 }
 
 function copyFromDataset(element) {
