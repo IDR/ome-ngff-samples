@@ -79,7 +79,7 @@ $ aws s3 sync --endpoint-url https://uk1s3.embassy.ebi.ac.uk --no-sign-request s
         </tr>
     </thead>
     <tbody>
-{% assign s3key = "EMBL-EBI bucket (current)" %}
+{% assign s3key = "File Path" %}
 {% assign studykey = "Study" %}
 {% for rec in site.data.table %}
 {% capture image_name %}{{ rec.[s3key] | split: "/" | last }}{% endcapture %}

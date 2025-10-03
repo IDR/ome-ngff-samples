@@ -1,4 +1,4 @@
-OME-NGFF version,EMBL-EBI bucket (current),SizeX,SizeY,SizeZ,SizeC,SizeT,Axes,Wells,Fields,Keywords,License,Study,DOI,Date added,Representative Image ID
+OME-NGFF version,File Path,SizeX,SizeY,SizeZ,SizeC,SizeT,Axes,Wells,Fields,Keywords,License,Study,DOI,Date added,Representative Image ID
 0.1,https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.1/12689244.zarr,4992,4255,401,3,1,XYZCT,,,,CC BY 4.0,idr0106,,2020-11-04,12689244
 0.1,https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.1/179706.zarr,1344,1024,1,2,329,XYZCT,,,,CC BY 4.0,idr0002,,2020-11-04,179706
 0.1,https://uk1s3.embassy.ebi.ac.uk/idr/zarr/v0.1/1884807.zarr,256,256,1,3,1,XYZCT,,,,CC BY 4.0,idr0021,,2020-11-04,1884807
