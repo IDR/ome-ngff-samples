@@ -280,6 +280,18 @@ function copyTextToClipboard(text) {
 
         <div style="margin-bottom: 20px; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
+                <h4 style="margin: 0;">HTTPS URL:</h4>
+                <div style="display: flex; align-items: center;">
+                    <button onclick="copyFromDataset(document.getElementById('httpsUrlText'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
+                        Copy
+                    </button>
+                </div>
+            </div>
+            <code id="httpsUrlText" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto; white-space: nowrap;"></code>
+        </div>
+
+        <div style="margin-bottom: 20px; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
                 <h4 style="margin: 0;"><a href="https://ome-zarr.readthedocs.io/en/stable/index.html" target="_blank" style="color: #0066cc; text-decoration: underline;">ome-zarr</a> CLI Command:</h4>
                 <div style="display: flex; align-items: center;">
                     <button onclick="copyFromDataset(document.getElementById('omeZarrCommand'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
@@ -326,18 +338,6 @@ function copyTextToClipboard(text) {
                 </div>
                 <code id="s3UrlText" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto;"></code>
             </div>
-        </div>
-
-        <div style="margin-bottom: 20px; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
-                <h4 style="margin: 0;">HTTPS URL:</h4>
-                <div style="display: flex; align-items: center;">
-                    <button onclick="copyFromDataset(document.getElementById('httpsUrlText'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
-                        Copy
-                    </button>
-                </div>
-            </div>
-            <code id="httpsUrlText" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto; white-space: nowrap;"></code>
         </div>
 
         <div style="margin-bottom: 0; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
