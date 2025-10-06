@@ -1,5 +1,6 @@
 ---
 title: "Catalog of IDR images formatted as OME-NGFF"
+layout: default
 ---
 <script type="application/ld+json">
 {
@@ -82,7 +83,7 @@ $ aws s3 sync --endpoint-url https://uk1s3.embassy.ebi.ac.uk --no-sign-request s
 {% assign s3key = "EMBL-EBI bucket (current)" %}
 {% assign studykey = "Study" %}
 {% for rec in site.data.table %}
-{% capture image_name %}{{ rec.[s3key] | split: "/" | last }}{% endcapture %}
+{% capture image_name %}{{ rec[s3key] | split: "/" | last }}{% endcapture %}
 {% capture image_id %}{{ image_name | split: "." | first}}{% endcapture %}
         <tr>
             <td>{{ rec["OME-NGFF version"] }}</td>
@@ -121,19 +122,19 @@ $ aws s3 sync --endpoint-url https://uk1s3.embassy.ebi.ac.uk --no-sign-request s
                 {% endunless %}
                 {% endunless %}
             </td>
-            <td>{{ rec.["SizeX"] }}</td>
-            <td>{{ rec.["SizeY"] }}</td>
-            <td>{{ rec.["SizeZ"] }}</td>
-            <td>{{ rec.["SizeC"] }}</td>
-            <td>{{ rec.["SizeT"] }}</td>
-            <td>{{ rec.["Axes"] }}</td>
-            <td>{{ rec.["Wells"] }}</td>
-            <td>{{ rec.["Fields"] }}</td>
-            <td>{{ rec.["Keywords"] }}</td>
-            <td>{{ rec.["License"] }}</td>
+            <td>{{ rec["SizeX"] }}</td>
+            <td>{{ rec["SizeY"] }}</td>
+            <td>{{ rec["SizeZ"] }}</td>
+            <td>{{ rec["SizeC"] }}</td>
+            <td>{{ rec["SizeT"] }}</td>
+            <td>{{ rec["Axes"] }}</td>
+            <td>{{ rec["Wells"] }}</td>
+            <td>{{ rec["Fields"] }}</td>
+            <td>{{ rec["Keywords"] }}</td>
+            <td>{{ rec["License"] }}</td>
             <td>
                 <a href="https://idr.openmicroscopy.org/search/?query=Name:{{ rec[studykey] }}">
-                    {{ rec.["Study"] }}
+                    {{ rec["Study"] }}
                 </a>
                 <br>
                 {% if rec["Wells"] %}
@@ -148,8 +149,8 @@ $ aws s3 sync --endpoint-url https://uk1s3.embassy.ebi.ac.uk --no-sign-request s
                     </a>
                 {% endif %}
             </td>
-            <td>{{ rec.["DOI"] }}</td>
-            <td>{{ rec.["Date added"] }}</td>
+            <td>{{ rec["DOI"] }}</td>
+            <td>{{ rec["Date added"] }}</td>
         </tr>
 {% endfor %}
     </tbody>

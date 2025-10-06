@@ -1,0 +1,17 @@
+[project]
+name = "ome-ngff-samples"
+version = "0.1.0"
+description = "IDR OME-NGFF Samples documentation site"
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "osx-64", "linux-64"]
+
+[dependencies]
+ruby = ">=3.2"
+c-compiler = "*"
+compilers = "*"
+cxx-compiler = "*"
+
+[tasks]
+install = "gem install bundler && bundle install"
+serve = { cmd = "bundle exec jekyll serve", depends-on = ["install"] }
+build = { cmd = "bundle exec jekyll build", depends-on = ["install"] }

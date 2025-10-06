@@ -3,18 +3,40 @@
 
 This is a page to list various OME-NGFF sample images from IDR. Deployed at https://idr.github.io/ome-ngff-samples/
 
-# Development
+## Development
 
-To deploy locally, you'll need to comment-out this line in the Gemfile::
+### Prerequisites
 
-    gem "github-pages", group: :jekyll_plugins
+- [pixi](https://pixi.sh/) - Cross-platform package management tool
 
-Then you can run jekyll in a conda environment::
+### Local Development
 
-    conda create -n jekyll -c conda-forge rb-bundler c-compiler compilers cxx-compiler
-    conda activate jekyll
-    bundle install
-    bundle exec jekyll serve
+1. **Install dependencies:**
+   ```bash
+   pixi install
+   ```
 
-This will generate the html and serve it at http://127.0.0.1:4000/ but static files
-such as JavaScript and CSS will be missing.
+2. **Start the development server:**
+   ```bash
+   pixi run serve
+   ```
+
+   The site will be available at http://127.0.0.1:4000/ome-ngff-samples/
+
+3. **Build the static site:**
+   ```bash
+   pixi run build
+   ```
+
+   The built site will be in the `_site/` directory.
+
+### How It Works
+
+- **pixi** manages the Ruby environment and dependencies
+- **Jekyll 4.0** builds the static site
+- **Minima 2.5.2** theme with custom head support for jQuery/DataTables
+- Both local and CI use the same `pixi.toml` and `Gemfile.lock` for consistency
+
+### Deployment
+
+The site is automatically deployed to GitHub Pages when changes are pushed to the main branch using GitHub's built-in Jekyll build process.
