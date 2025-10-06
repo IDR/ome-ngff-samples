@@ -50,11 +50,9 @@ layout: default
     @keyframes seesaw { from { transform: rotate(-0.05turn) } to { transform: rotate(0.05turn); }  }
 </style>
 
-<p>To download samples using the AWS CLI with a custom S3-compatible endpoint:</p>
+<h3><strong>Download or Access Data</strong></h3>
 
-<code>
-$ aws s3 sync --endpoint-url https://uk1s3.embassy.ebi.ac.uk --no-sign-request s3://idr/zarr/v0.4/idr0062A/6001240.zarr/ 6001240.zarr
-</code>
+<p>Click the <img class="icon" src="assets/img/copy.png" style="vertical-align: middle;"/> copy button in the table below for download options including URLs and code samples.</p>
 
 <table class="display table" id="table">
     <thead>
@@ -208,12 +206,14 @@ function showS3Options(httpsUrl, imageName) {
     document.getElementById('omeZarrCommand').textContent = omeZarrCommand;
     document.getElementById('s3Endpoint').textContent = endpoint;
     document.getElementById('s3UrlText').textContent = s3Url;
+    document.getElementById('httpsUrlText').textContent = httpsUrl;
     document.getElementById('pythonCodeInOptions').innerHTML = python.html;
 
     document.getElementById('awsCliCommand').dataset.copyText = awsCommand;
     document.getElementById('omeZarrCommand').dataset.copyText = omeZarrCommand;
     document.getElementById('s3Endpoint').dataset.copyText = endpoint;
     document.getElementById('s3UrlText').dataset.copyText = s3Url;
+    document.getElementById('httpsUrlText').dataset.copyText = httpsUrl;
     document.getElementById('pythonCodeInOptions').dataset.copyText = python.code;
 
     modal.style.display = 'block';
@@ -272,13 +272,13 @@ function copyTextToClipboard(text) {
 
 <!-- Modal for S3 options -->
 <div id="s3OptionsModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow-y: auto;">
-    <div style="background-color: white; margin: 5% auto 5% auto; padding: 20px; border-radius: 5px; width: 80%; max-width: 700px;">
+    <div style="background-color: white; margin: 2% auto 5% auto; padding: 20px; border-radius: 5px; width: 80%; max-width: 700px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
             <h3 style="margin: 0;" id="s3OptionsTitle">Download Options</h3>
             <button onclick="closeS3Options()" style="background: none; border: none; font-size: 24px; cursor: pointer;">&times;</button>
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
                 <h4 style="margin: 0;"><a href="https://ome-zarr.readthedocs.io/en/stable/index.html" target="_blank" style="color: #0066cc; text-decoration: underline;">ome-zarr</a> CLI Command:</h4>
                 <div style="display: flex; align-items: center;">
@@ -290,7 +290,7 @@ function copyTextToClipboard(text) {
             <code id="omeZarrCommand" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto; white-space: nowrap;"></code>
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
                 <h4 style="margin: 0;">AWS CLI Command:</h4>
                 <div style="display: flex; align-items: center;">
@@ -302,31 +302,45 @@ function copyTextToClipboard(text) {
             <code id="awsCliCommand" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto; white-space: nowrap;"></code>
         </div>
 
-        <div style="margin-bottom: 20px;">
+        <div style="margin-bottom: 20px; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
+                    <h4 style="margin: 0;">S3 Endpoint URL:</h4>
+                    <div style="display: flex; align-items: center;">
+                        <button onclick="copyFromDataset(document.getElementById('s3Endpoint'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
+                            Copy
+                        </button>
+                    </div>
+                </div>
+                <code id="s3Endpoint" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto;"></code>
+            </div>
+
+            <div style="margin-bottom: 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
+                    <h4 style="margin: 0;">S3 URL:</h4>
+                    <div style="display: flex; align-items: center;">
+                        <button onclick="copyFromDataset(document.getElementById('s3UrlText'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
+                            Copy
+                        </button>
+                    </div>
+                </div>
+                <code id="s3UrlText" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto;"></code>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
-                <h4 style="margin: 0;">S3 Endpoint URL:</h4>
+                <h4 style="margin: 0;">HTTPS URL:</h4>
                 <div style="display: flex; align-items: center;">
-                    <button onclick="copyFromDataset(document.getElementById('s3Endpoint'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
+                    <button onclick="copyFromDataset(document.getElementById('httpsUrlText'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
                         Copy
                     </button>
                 </div>
             </div>
-            <code id="s3Endpoint" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto;"></code>
+            <code id="httpsUrlText" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto; white-space: nowrap;"></code>
         </div>
 
-        <div style="margin-bottom: 20px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
-                <h4 style="margin: 0;">S3 URL:</h4>
-                <div style="display: flex; align-items: center;">
-                    <button onclick="copyFromDataset(document.getElementById('s3UrlText'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
-                        Copy
-                    </button>
-                </div>
-            </div>
-            <code id="s3UrlText" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto;"></code>
-        </div>
-
-        <div style="margin-bottom: 0;">
+        <div style="margin-bottom: 0; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
                 <h4 style="margin: 0;"><a href="https://zarr.readthedocs.io/en/stable/" target="_blank" style="color: #0066cc; text-decoration: underline;">Zarr-Python</a>:</h4>
                 <div style="display: flex; align-items: center;">
