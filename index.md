@@ -50,12 +50,9 @@ layout: default
     @keyframes seesaw { from { transform: rotate(-0.05turn) } to { transform: rotate(0.05turn); }  }
 </style>
 
-<p>To download samples, you can use <code>aws</code> CLI. E.g</p>
+<h3><strong>Download or Access Data</strong></h3>
 
-<code>
-$ aws s3 sync --endpoint-url https://uk1s3.embassy.ebi.ac.uk --no-sign-request s3://idr/zarr/v0.4/idr0062A/6001240.zarr/ 6001240.zarr
-</code>
-
+<p>Click the <img class="icon" src="assets/img/copy.png" style="vertical-align: middle;"/> copy button in the table below for download options including URLs and code samples.</p>
 
 <table class="display table" id="table">
     <thead>
@@ -102,7 +99,7 @@ $ aws s3 sync --endpoint-url https://uk1s3.embassy.ebi.ac.uk --no-sign-request s
                 <a href="{{ rec[s3key] }}">
                     {{ image_name }}
                 </a><br>
-                <button class="no_border" title="Copy S3 URL to clipboard" onclick="copyTextToClipboard('{{ rec[s3key] }}')">
+                <button class="no_border" title="Show download options" onclick="showS3Options('{{ rec[s3key] }}', '{{ image_name }}')">
                     <img class="icon" src="assets/img/copy.png"/>
                 </button>
                 <!-- vizarr supports Plate or Non-bioformats2raw images -->
@@ -166,6 +163,75 @@ $(document).ready( function () {
     });
 } );
 
+function generatePythonCode(httpsUrl) {
+    const s3Url = httpsUrl.replace('https://uk1s3.embassy.ebi.ac.uk/', 's3://');
+    const endpoint = 'https://uk1s3.embassy.ebi.ac.uk';
+
+    const code = `import zarr
+
+zarr_group = zarr.open(
+    "${s3Url}",
+    storage_options={
+        "anon": True,
+        "client_kwargs": {
+            "endpoint_url": "${endpoint}"
+        }
+    }
+)`;
+
+    const html = `<span style="color: #0000ff;">import</span> zarr
+
+zarr_group = zarr.<span style="color: #795e26;">open</span>(
+    <span style="color: #008000;">"${s3Url}"</span>,
+    storage_options={
+        <span style="color: #008000;">"anon"</span>: <span style="color: #0000ff;">True</span>,
+        <span style="color: #008000;">"client_kwargs"</span>: {
+            <span style="color: #008000;">"endpoint_url"</span>: <span style="color: #008000;">"${endpoint}"</span>
+        }
+    }
+)`;
+
+    return { code, html };
+}
+
+function showS3Options(httpsUrl, imageName) {
+    const s3Url = httpsUrl.replace('https://uk1s3.embassy.ebi.ac.uk/', 's3://');
+    const endpoint = 'https://uk1s3.embassy.ebi.ac.uk';
+    const awsCommand = `aws s3 sync --endpoint-url ${endpoint} --no-sign-request ${s3Url} ${imageName}`;
+    const omeZarrCommand = `uvx --with ome-zarr ome_zarr download ${httpsUrl} --output ${imageName}`;
+    const python = generatePythonCode(httpsUrl);
+
+    const modal = document.getElementById('s3OptionsModal');
+    document.getElementById('s3OptionsTitle').textContent = `Download Options: ${imageName}`;
+    document.getElementById('awsCliCommand').textContent = awsCommand;
+    document.getElementById('omeZarrCommand').textContent = omeZarrCommand;
+    document.getElementById('s3Endpoint').textContent = endpoint;
+    document.getElementById('s3UrlText').textContent = s3Url;
+    document.getElementById('httpsUrlText').textContent = httpsUrl;
+    document.getElementById('pythonCodeInOptions').innerHTML = python.html;
+
+    document.getElementById('awsCliCommand').dataset.copyText = awsCommand;
+    document.getElementById('omeZarrCommand').dataset.copyText = omeZarrCommand;
+    document.getElementById('s3Endpoint').dataset.copyText = endpoint;
+    document.getElementById('s3UrlText').dataset.copyText = s3Url;
+    document.getElementById('httpsUrlText').dataset.copyText = httpsUrl;
+    document.getElementById('pythonCodeInOptions').dataset.copyText = python.code;
+
+    modal.style.display = 'block';
+
+    modal.onclick = closeS3Options;
+}
+
+function closeS3Options(event) {
+    // event is undifined if click comes from x button
+    if (event == undefined || event?.target.id == "s3OptionsModal") {
+        document.getElementById('s3OptionsModal').style.display = 'none';
+    }
+}
+
+function copyFromDataset(element) {
+    copyTextToClipboard(element.dataset.copyText);
+}
 
 function copyTextToClipboard(text) {
     var textArea = document.createElement("textarea");
@@ -187,16 +253,104 @@ function copyTextToClipboard(text) {
     document.body.removeChild(textArea);
 
     if (successful) {
-        // show user that copying happened - update text on element (e.g. button)
+        // Show "Copied!" feedback to the left of button
         let target = event.target;
-        let html = target.innerHTML;
-        target.classList.add("shake");
+        let feedback = document.createElement('span');
+        feedback.textContent = 'Copied! ';
+        feedback.style.color = '#28a745';
+        feedback.style.fontSize = '12px';
+        feedback.style.marginRight = '5px';
+        target.parentNode.insertBefore(feedback, target);
+
         setTimeout(() => {
-            // reset after 1 second
-            target.classList.remove("shake");
-        }, 1000)
+            feedback.remove();
+        }, 1500)
     } else {
         console.log("Copying failed")
     }
 }
 </script>
+
+<!-- Modal for S3 options -->
+<div id="s3OptionsModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow-y: auto;">
+    <div style="background-color: white; margin: 2% auto 5% auto; padding: 20px; border-radius: 5px; width: 80%; max-width: 700px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h3 style="margin: 0;" id="s3OptionsTitle">Download Options</h3>
+            <button onclick="closeS3Options()" style="background: none; border: none; font-size: 24px; cursor: pointer;">&times;</button>
+        </div>
+
+        <div style="margin-bottom: 20px; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
+                <h4 style="margin: 0;">HTTPS URL:</h4>
+                <div style="display: flex; align-items: center;">
+                    <button onclick="copyFromDataset(document.getElementById('httpsUrlText'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
+                        Copy
+                    </button>
+                </div>
+            </div>
+            <code id="httpsUrlText" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto; white-space: nowrap;"></code>
+        </div>
+
+        <div style="margin-bottom: 20px; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
+                <h4 style="margin: 0;"><a href="https://ome-zarr.readthedocs.io/en/stable/index.html" target="_blank" style="color: #0066cc; text-decoration: underline;">ome-zarr</a> CLI Command:</h4>
+                <div style="display: flex; align-items: center;">
+                    <button onclick="copyFromDataset(document.getElementById('omeZarrCommand'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
+                        Copy
+                    </button>
+                </div>
+            </div>
+            <code id="omeZarrCommand" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto; white-space: nowrap;"></code>
+        </div>
+
+        <div style="margin-bottom: 20px; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
+                <h4 style="margin: 0;">AWS CLI Command:</h4>
+                <div style="display: flex; align-items: center;">
+                    <button onclick="copyFromDataset(document.getElementById('awsCliCommand'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
+                        Copy
+                    </button>
+                </div>
+            </div>
+            <code id="awsCliCommand" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto; white-space: nowrap;"></code>
+        </div>
+
+        <div style="margin-bottom: 20px; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
+            <div style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
+                    <h4 style="margin: 0;">S3 Endpoint URL:</h4>
+                    <div style="display: flex; align-items: center;">
+                        <button onclick="copyFromDataset(document.getElementById('s3Endpoint'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
+                            Copy
+                        </button>
+                    </div>
+                </div>
+                <code id="s3Endpoint" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto;"></code>
+            </div>
+
+            <div style="margin-bottom: 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
+                    <h4 style="margin: 0;">S3 URL:</h4>
+                    <div style="display: flex; align-items: center;">
+                        <button onclick="copyFromDataset(document.getElementById('s3UrlText'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
+                            Copy
+                        </button>
+                    </div>
+                </div>
+                <code id="s3UrlText" style="display: block; padding: 10px; background: #f5f5f5; border-radius: 3px; overflow-x: auto;"></code>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 0; padding: 15px; border: 3px solid #e0e0e0; border-radius: 5px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; gap: 10px;">
+                <h4 style="margin: 0;"><a href="https://zarr.readthedocs.io/en/stable/" target="_blank" style="color: #0066cc; text-decoration: underline;">Zarr-Python</a>:</h4>
+                <div style="display: flex; align-items: center;">
+                    <button onclick="copyFromDataset(document.getElementById('pythonCodeInOptions'))" style="padding: 6px 12px; cursor: pointer; background: #0066cc; color: white; border: none; border-radius: 3px; font-size: 12px;">
+                        Copy
+                    </button>
+                </div>
+            </div>
+            <pre id="pythonCodeInOptions" style="margin: 0; padding: 15px; background: #f5f5f5; border-radius: 3px; overflow-x: auto;"></pre>
+        </div>
+    </div>
+</div>
