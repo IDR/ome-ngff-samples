@@ -161,7 +161,8 @@ $(document).ready( function () {
     $('#table').DataTable( {
           "scrollX": true,
           "pageLength": 100,
-          "order": [[ 15, 'desc' ]]
+          "order": [[ 15, 'desc' ]],
+          "fixedHeader": true
     });
 } );
 
