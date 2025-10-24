@@ -40,3 +40,21 @@ This is a page to list various OME-NGFF sample images from IDR. Deployed at http
 ### Deployment
 
 The site is automatically deployed to GitHub Pages when changes are pushed to the main branch using GitHub's built-in Jekyll build process.
+
+## Troubleshooting
+
+### Permission denied errors with pixi on macOS
+
+If you encounter permission denied errors with your temp directory when running `pixi` commands:
+
+```bash
+mkdir -p ~/tmp
+export TMPDIR=~/tmp
+```
+
+To make this permanent, add to your shell profile:
+```bash
+echo 'export TMPDIR=~/tmp' >> ~/.zshrc  # or ~/.bashrc
+```
+
+This is particularly common on university/enterprise-managed macOS machines where the default `$TMPDIR` may have restricted permissions.
