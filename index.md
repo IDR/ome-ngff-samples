@@ -77,7 +77,7 @@ layout: default
         </tr>
     </thead>
     <tbody>
-{% assign s3key = "EMBL-EBI bucket (current)" %}
+{% assign s3key = "File Path" %}
 {% assign studykey = "Study" %}
 {% for rec in site.data.table %}
 {% capture image_name %}{{ rec[s3key] | split: "/" | last }}{% endcapture %}
@@ -158,7 +158,8 @@ $(document).ready( function () {
     $('#table').DataTable( {
           "scrollX": true,
           "pageLength": 100,
-          "order": [[ 15, 'desc' ]]
+          "order": [[ 15, 'desc' ]],
+          "fixedHeader": true
     });
 } );
 
