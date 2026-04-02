@@ -63,7 +63,7 @@ OME-NGFF version,File Path,SizeX,SizeY,SizeZ,SizeC,SizeT,Axes,Wells,Fields,Keywo
 0.3,https://livingobjects.ebi.ac.uk/idr/zarr/v0.3/idr0095B/11511422.zarr,2048,2048,,3,,XYC,,,labels (0),CC BY 4.0,idr0095,,2021-12-16,11511422,
 0.3,https://livingobjects.ebi.ac.uk/idr/zarr/v0.3/idr0095B/11511423.zarr,2048,2048,,3,,XYC,,,labels (0),CC BY 4.0,idr0095,,2021-12-16,11511423,
 0.3,https://livingobjects.ebi.ac.uk/idr/zarr/v0.3/idr0095B/11511424.zarr,2048,2048,,3,,XYC,,,labels (0),CC BY 4.0,idr0095,,2021-12-16,11511424,
-0.3,https://livingobjects.ebi.ac.uk/idr/zarr/v0.3/idr0094A/7751.zarr,1080,1080,,,,XY,96,9,,CC0 1.0,idr0094,,2021-12-16,10503791,
+0.3,https://livingobjects.ebi.ac.uk/idr/zarr/v0.3/idr0094A/7751.zarr,1080,1080,,,,XY,96,9,,CC0 1.0,idr0094,,2021-12-16,10503791,https://livingobjects.ebi.ac.uk/idr/zarr/v0.3/idr0094A/7751.zarr/C/11/0
 0.3,https://livingobjects.ebi.ac.uk/idr/zarr/v0.3/idr0109A/12922361.zarr,2560,2160,,,721,XYT,,,,CC BY 4.0,idr0109,,2021-12-16,12922361,
 0.3,https://livingobjects.ebi.ac.uk/idr/zarr/v0.3/idr0075A/9528933.zarr,512,512,91,,,XYZ,,,,CC BY 4.0,idr0075,,2021-12-16,9528933,
 0.3,https://livingobjects.ebi.ac.uk/idr/zarr/v0.3/idr0051A/4007817.zarr,333,333,201,,79,XYZT,,,,CC BY 4.0,idr0051,,2021-12-16,4007817,
@@ -83,7 +83,7 @@ OME-NGFF version,File Path,SizeX,SizeY,SizeZ,SizeC,SizeT,Axes,Wells,Fields,Keywo
 0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0047A/4496763.zarr,2048,2048,25,4,,XYZC,,,labels (0),CC BY 4.0,idr0047,,2022-06-21,4496763,
 0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0062A/6001240.zarr,271,275,236,2,,XYZC,,,labels (0),CC BY 4.0,idr0062,,2022-06-21,6001240,
 0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0052A/5514375.zarr,256,256,31,3,40,XYZCT,,,"labels (Cell, Chromosomes)",CC BY 4.0,idr0052,,2022-06-21,5514375,
-0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0001A/2551.zarr,1376,1040,16,2,1,XYZC,96,6,labels (0),CC BY 4.0,idr0001,,2022-07-06,1230059,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0001A/2551.zarr/A/1/0
+0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0001A/2551.zarr,1376,1040,16,2,1,XYZC,96,6,labels (0),CC BY 4.0,idr0001,,2022-07-06,1230059,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0001A/2551.zarr/F/6/0
 0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0101A/13457227.zarr,2048,2048,35,4,18,XYZCT,,,,CC BY 4.0,idr0101,,2022-10-13,13457227,
 0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0101A/13457537.zarr,198,223,12,6,18,XYZCT,,,coordinateTransformation (translation) on dataset,CC BY 4.0,idr0101,,2022-10-13,13457537,
 0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0101A/13457539.zarr,190,189,11,6,18,XYZCT,,,coordinateTransformation (translation) on multiscales,CC BY 4.0,idr0101,,2022-10-13,13457539,
