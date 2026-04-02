@@ -87,7 +87,7 @@ OME-NGFF version,File Path,SizeX,SizeY,SizeZ,SizeC,SizeT,Axes,Wells,Fields,Keywo
 0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0101A/13457227.zarr,2048,2048,35,4,18,XYZCT,,,,CC BY 4.0,idr0101,,2022-10-13,13457227,
 0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0101A/13457537.zarr,198,223,12,6,18,XYZCT,,,coordinateTransformation (translation) on dataset,CC BY 4.0,idr0101,,2022-10-13,13457537,
 0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0101A/13457539.zarr,190,189,11,6,18,XYZCT,,,coordinateTransformation (translation) on multiscales,CC BY 4.0,idr0101,,2022-10-13,13457539,
-0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0048A/9846151.zarr/,2947,5192,1402,3,1,XYZCT,,,bioformats2raw.layout,CC BY 4.0,idr0048,,2023-01-12,9846151,
+0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0048A/9846151.zarr/,2947,5192,1402,3,1,XYZCT,,,bioformats2raw.layout,CC BY 4.0,idr0048,,2023-01-12,9846151,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0048A/9846151.zarr/0/
 0.4,https://livingobjects.ebi.ac.uk/idr/zarr/v0.4/idr0048A/9846152.zarr/,19120,13350,91,3,1,XYZCT,,,,CC BY 4.0,idr0048,,2023-01-12,9846152,
 0.5,https://livingobjects.ebi.ac.uk/idr/zarr/v0.5/idr0010/76-45.ome.zarr,,520,1,2,1,XYZCT,384,1,,CC BY 4.0,idr0010,,2024-11-21,1921421,https://livingobjects.ebi.ac.uk/idr/zarr/v0.5/idr0010/76-45.ome.zarr/A/2/0/
 0.5,https://livingobjects.ebi.ac.uk/idr/zarr/v0.5/idr0090/190129.zarr,2048,2044,31,5,,XYZC,49,32,,CC BY 4.0,idr0090,,2024-11-21,12539701,https://livingobjects.ebi.ac.uk/idr/zarr/v0.5/idr0090/190129.zarr/B/2/0/
