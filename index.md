@@ -164,8 +164,8 @@ $(document).ready( function () {
 } );
 
 function generatePythonCode(httpsUrl) {
-    const s3Url = httpsUrl.replace('https://uk1s3.embassy.ebi.ac.uk/', 's3://');
-    const endpoint = 'https://uk1s3.embassy.ebi.ac.uk';
+    const s3Url = httpsUrl.replace('https://livingobjects.ebi.ac.uk/', 's3://');
+    const endpoint = 'https://livingobjects.ebi.ac.uk';
 
     const code = `import zarr
 
@@ -195,8 +195,8 @@ zarr_group = zarr.<span style="color: #795e26;">open</span>(
 }
 
 function showS3Options(httpsUrl, imageName) {
-    const s3Url = httpsUrl.replace('https://uk1s3.embassy.ebi.ac.uk/', 's3://');
-    const endpoint = 'https://uk1s3.embassy.ebi.ac.uk';
+    const s3Url = httpsUrl.replace('https://livingobjects.ebi.ac.uk/', 's3://');
+    const endpoint = 'https://livingobjects.ebi.ac.uk';
     const awsCommand = `aws s3 sync --endpoint-url ${endpoint} --no-sign-request ${s3Url} ${imageName}`;
     const omeZarrCommand = `uvx --with ome-zarr ome_zarr download ${httpsUrl} --output ${imageName}`;
     const python = generatePythonCode(httpsUrl);
