@@ -45,6 +45,15 @@ layout: default
     .shake {
         animation: 0.1s linear 0s infinite alternate seesaw;
     }
+    .bff {
+        display: inline-block;
+        padding: 0.25em 0.5em;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        text-decoration: none;
+        font-size: 0.9em;
+    }
 
     @-webkit-keyframes seesaw { from { transform: rotate(-0.05turn) } to { transform: rotate(0.05turn); }  }
     @keyframes seesaw { from { transform: rotate(-0.05turn) } to { transform: rotate(0.05turn); }  }
@@ -52,7 +61,12 @@ layout: default
 
 <h3><strong>Download or Access Data</strong></h3>
 
-<p>Click the <img class="icon" src="assets/img/copy.png" style="vertical-align: middle;"/> copy button in the table below for download options including URLs and code samples.</p>
+<p>
+    Click the <img class="icon" src="assets/img/copy.png" style="vertical-align: middle;"/> copy button in the table below for download options including URLs and code samples.
+    You can also
+    <a target="_blank" class="bff" href="https://bff.allencell.org/app?source=%7B%22name%22%3A%22table.csv+%2801%2F04%2F2026+14%3A47%3A35%29%22%2C%22type%22%3A%22csv%22%2C%22uri%22%3A%22https%3A%2F%2Fraw.githubusercontent.com%2FIDR%2Fome-ngff-samples%2Frefs%2Fheads%2Fmain%2F_data%2Ftable.csv%22%7D">
+        open this table in BioFile Finder</a>.
+</p>
 
 <table class="display table" id="table">
     <thead>
