@@ -55,6 +55,29 @@ layout: default
         font-size: 0.9em;
     }
 
+    .fiji {
+        position: relative;
+        display: inline-block;
+    }
+    /* ponytail: CSS-only popup; in the last table rows it can be clipped by the table's scroll container */
+    .fiji_hint {
+        visibility: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 100;
+        width: 300px;
+        padding: 10px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 0.85em;
+        white-space: normal;
+    }
+    .fiji:hover .fiji_hint {
+        visibility: visible;
+    }
+
     @-webkit-keyframes seesaw { from { transform: rotate(-0.05turn) } to { transform: rotate(0.05turn); }  }
     @keyframes seesaw { from { transform: rotate(-0.05turn) } to { transform: rotate(0.05turn); }  }
 </style>
@@ -131,6 +154,16 @@ layout: default
                     href="https://kitware.github.io/itk-vtk-viewer/app/?rotate=false&fileToLoad={{ rec[s3key] }}">
                     <img class="icon" src="assets/img/itkvtk_logo.png"/></a>
                 {% endunless %}
+                {% endunless %}
+                <!-- Fiji opens v0.4/v0.5 images only, not plates or bioformats2raw containers -->
+                {% unless rec['Wells'] or rec['Keywords'] contains "bioformats2raw.layout" %}
+                {% if rec["OME-NGFF version"] == "0.4" or rec["OME-NGFF version"] == "0.5" %}
+                <span class="fiji">
+                <a href="fiji://open/url?p={{ rec[s3key] | uri_escape | replace: '%', '%25' }}">
+                    <img class="icon" src="assets/img/fiji_zarr_logo.png"/></a>
+                <span class="fiji_hint">Opens the image in the Fiji registered for <code>fiji://</code> links. Needs <a href="https://fiji.sc">Fiji-Latest</a> with the <a href="https://github.com/BioImageTools/ome-zarr-fiji-java#fiji-update-site">OME-Zarr update site</a>. <a href="https://github.com/BioImageTools/ome-zarr-fiji-java#fiji-links-fiji">More info...</a></span>
+                </span>
+                {% endif %}
                 {% endunless %}
             </td>
             <td>{{ rec["SizeX"] }}</td>
