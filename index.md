@@ -124,7 +124,7 @@ layout: default
             <td>
                 <a target="_blank"
                     title="Open NGFF {% if rec['Wells'] %}Plate{% else %}Image{% endif %} in Vizarr"
-                    href="http://hms-dbmi.github.io/vizarr/?source={{ rec[s3key] }}">
+                    href="https://biongff.github.io/vizarr/?source={{ rec[s3key] }}">
                     <img
                         alt="IDR thumbnail for Image:{{ rec["Representative Image ID"] }}"
                         style="margin:0"
@@ -142,7 +142,7 @@ layout: default
                 <!-- vizarr supports Plate or Non-bioformats2raw images -->
                 {% if rec['Wells'] or rec['Keywords'] != "bioformats2raw.layout" %}
                 <a title="View NGFF {% if rec['Wells'] %}Plate{% else %}Image{% endif %} in Vizarr" target="_blank"
-                    href="http://hms-dbmi.github.io/vizarr/?source={{ rec[s3key] }}">
+                    href="https://biongff.github.io/vizarr/?source={{ rec[s3key] }}">
                     <img class="icon vizarr" src="assets/img/vizarr_logo.png"/></a>
                 {% endif %}
                 <a title="Validate NGFF with 'ome-ngff-validator' in new browser tab" target="_blank"
